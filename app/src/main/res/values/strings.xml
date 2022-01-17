@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GuiaT</string>
+    <string name="mail">Correo Electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="register_text">No tienes una cuenta , Registrate</string>
+    <string name="name">Nombre Completo</string>
+    <string name="email">Correo electronico</string>
+    <string name="repeat_password">Repite la contraseña</string>
+    <string name="register">Registrarse!</string>
+    <string name="sign_out">Cerrar Sesion</string>
+</resources>
