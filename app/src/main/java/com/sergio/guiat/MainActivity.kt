@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         with(mainBinding){
-            viewMailTextView.setText(emailReceived)
+            viewMailTextView.text = emailReceived
         }
 
 
