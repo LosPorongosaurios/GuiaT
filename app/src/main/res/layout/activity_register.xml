@@ -30,12 +30,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_edit_text"
-            android:textColor="#000000"
-            android:fontFamily="@font/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/didact_gothic"
             android:hint="@string/name"
             android:inputType="textPersonName"
+            android:textColor="#000000"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,12 +52,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_edit_text"
-            android:textColor="#000000"
-            android:fontFamily="@font/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/didact_gothic"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:textColor="#000000"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,12 +75,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_edit_text"
-            android:textColor="#000000"
-            android:fontFamily="@font/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/didact_gothic"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:textColor="#000000"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,23 +98,23 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordl_edit_text"
-            android:textColor="#000000"
-            android:fontFamily="@font/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/didact_gothic"
             android:hint="@string/repeat_password"
             android:inputType="textPassword"
+            android:textColor="#000000"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:textColor="#000000"
-        android:fontFamily="@font/orange"
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/didact_gothic"
         android:text="@string/register"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reppassword_text_input_layout"
