@@ -1,4 +1,4 @@
-package com.sergio.guiat
+package com.sergio.guiat.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

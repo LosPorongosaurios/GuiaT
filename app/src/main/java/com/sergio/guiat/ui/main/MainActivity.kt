@@ -1,10 +1,11 @@
-package com.sergio.guiat
+package com.sergio.guiat.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.sergio.guiat.R
 import com.sergio.guiat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
