@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.sergio.guiat.R
 import com.sergio.guiat.databinding.ActivityMainBinding
+import com.sergio.guiat.ui.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,9 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        with(mainBinding){
+      /*  with(mainBinding){
             viewMailTextView.text = emailReceived
-        }
+        }*/
 
 
     }
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToLoginActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, LoginFragment::class.java)
         intent.putExtra("email", emailReceived)
         intent.putExtra("password", passwordReceived)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

@@ -6,7 +6,7 @@ import com.sergio.guiat.local.GuiaTDatabase
 
 class GuiaTProject : Application() {
 
-    companion object {
+    companion object{
         lateinit var database: GuiaTDatabase
     }
 
@@ -16,7 +16,8 @@ class GuiaTProject : Application() {
         database = Room.databaseBuilder(
             this,
             GuiaTDatabase::class.java,
-            "guiat_db"
+            "Users_db"
         ).build()
     }
+
 }
