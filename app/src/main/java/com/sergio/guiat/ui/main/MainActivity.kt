@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_sign_out -> goToLoginActivity()
+          //  R.id.menu_sign_out -> goToLoginActivity()
         }
         return super.onOptionsItemSelected(item)
     }

@@ -16,7 +16,7 @@ class GuiaTProject : Application() {
         database = Room.databaseBuilder(
             this,
             GuiaTDatabase::class.java,
-            "Users_db"
+            "guiat_db"
         ).build()
     }
 

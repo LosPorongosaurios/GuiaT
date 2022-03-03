@@ -7,11 +7,11 @@ import java.sql.Types.NULL
 
 class UsersRepository {
 
-    suspend fun saveUser(name: String, cel: String, email: String, password: String) {
+    suspend fun saveUser(name: String, mail: String, cel: String, password: String) {
         val users = Users(
             id = NULL,
             name = name,
-            email = email,
+            mail = mail,
             cel = cel,
             password = password
         )
@@ -20,9 +20,9 @@ class UsersRepository {
 
     }
 
-    suspend fun searchUser(emailUser: String): Users {
-        val guiaTDao: GuiaTDao = GuiaTProject.database.GuiaTDao()
-        return guiaTDao.searchUser(emailUser)
+    suspend fun searchUser(email: String): Users {
+        val guiatDao: GuiaTDao = GuiaTProject.database.GuiaTDao()
+        return guiatDao.searchUser(email)
     }
 
 
