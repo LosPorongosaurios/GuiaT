@@ -141,6 +141,7 @@
             android:fontFamily="@font/didact_gothic"
             android:hint="@string/cel"
             android:inputType="phone"
-            android:textColorHint="#616161" />
+            android:textColorHint="#616161"
+            tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

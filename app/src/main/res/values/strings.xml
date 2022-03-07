@@ -30,4 +30,14 @@
     <string name="descripcion_del_tour">Descripcion Del Tour</string>
     <string name="todo">TODO</string>
     <string name="titulo_del_tour">Titulo del Tour</string>
+    <string name="name_tour">Nombre del tour</string>
+    <string name="schedule">Horario</string>
+    <string name="description">Descripción</string>
+    <string name="sites">Lugares</string>
+    <string name="add">Agregar</string>
+    <string name="offer_tour">Ofrece un tour</string>
+    <string name="tours_done">Tours Completados</string>
+    <string name="profile">Mi Perfil</string>
+    <string name="reserve_now">Reservar Ahora!</string>
+    <string name="chat">Chatea</string>
 </resources>

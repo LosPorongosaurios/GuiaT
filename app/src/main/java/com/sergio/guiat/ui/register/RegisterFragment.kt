@@ -27,13 +27,13 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        registerViewModel.msgDone.observe(viewLifecycleOwner, { result ->
+        registerViewModel.msgDone.observe(viewLifecycleOwner) { result ->
             onMsgDoneSubscribe(result)
-        })
+        }
 
-        registerViewModel.dataValidated.observe(viewLifecycleOwner, { result ->
+        registerViewModel.dataValidated.observe(viewLifecycleOwner) { result ->
             onDataValidatedSubscribe(result)
-        })
+        }
 
         with(registerBinding) {
             registerButton.setOnClickListener {

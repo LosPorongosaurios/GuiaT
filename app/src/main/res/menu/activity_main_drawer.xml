@@ -5,14 +5,19 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_person"
+            android:title="@string/profile"/>
+
+        <item
             android:id="@+id/guidebookFragment"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
 
         <item
-            android:id="@+id/detailFragment2"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/tours_list" />
+            android:id="@+id/addTourFragment"
+            android:icon="@drawable/ic_tour"
+            android:title="@string/offer_tour"/>
 
     </group>
 </menu>

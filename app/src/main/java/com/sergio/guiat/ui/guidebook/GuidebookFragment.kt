@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.sergio.guiat.databinding.FragmentGuidebookBinding
 
 class GuidebookFragment : Fragment() {
@@ -23,16 +24,30 @@ class GuidebookFragment : Fragment() {
         return guidebookBinding.root
     }
 
-    /*  override fun onActivityCreated(savedInstanceState: Bundle?) {
-          super.onActivityCreated(savedInstanceState)
 
-          //       routesAdapter = RoutesAdapter(routesList)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        guidebookBinding.reserveNowButton.setOnClickListener(){
+            findNavController().navigate(GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2())
+        }
+    }
+
+
+
+
+          /*       routesAdapter = RoutesAdapter(routesList)
 
             listBinding.routesRecyclerView.apply {
                 layoutManager = LinearLayoutManager(this@ListFragment.requireContext())
                 adapter = routesAdapter
                 setHasFixedSize(false)
-            }
-    }*/
+            }*/
+
+
+
+
+
+
 
 }

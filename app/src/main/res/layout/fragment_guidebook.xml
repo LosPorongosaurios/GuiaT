@@ -9,27 +9,27 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/title_tour_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/titulo_del_tour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/image_tour"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/description_tour_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/descripcion_del_tour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toEndOf="@+id/image_tour"
+        app:layout_constraintTop_toBottomOf="@+id/title_tour_text_view" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/image_tour"
         android:layout_width="124dp"
         android:layout_height="115dp"
         android:layout_marginStart="32dp"
@@ -38,5 +38,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/todo" />
+
+    <Button
+        android:id="@+id/reserve_now_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/reserve_now"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_tour"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/chat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/chat"
+        app:layout_constraintStart_toEndOf="@+id/reserve_now_button"
+        app:layout_constraintTop_toBottomOf="@+id/image_tour"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
