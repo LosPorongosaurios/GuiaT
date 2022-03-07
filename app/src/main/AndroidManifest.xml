@@ -16,7 +16,9 @@
             android:name=".ui.drawer.DrawerActivity"
             android:exported="true"
             android:label="@string/title_activity_drawer"
-            android:theme="@style/Theme.GuiaT.NoActionBar"/>
+            android:theme="@style/Theme.GuiaT.NoActionBar">
+
+        </activity>
 
         <activity
             android:name=".ui.main.MainActivity"
@@ -26,6 +28,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

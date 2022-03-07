@@ -37,7 +37,6 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <include app:graph="@navigation/mobile_navigation2" />
     <activity
         android:id="@+id/drawerActivity2"
         android:name="com.sergio.guiat.ui.drawer.DrawerActivity"

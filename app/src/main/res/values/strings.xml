@@ -22,7 +22,12 @@
     <string name="example_author">John Katzenbach</string>
 
     <string name="tours_list">Tours</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Home</string>
     <string name="cel">Celular</string>
+    <string name="routes">Rutas</string>
+    <string name="tour_name">Grafiti Tour</string>
+    <string name="tour_description">Descripcion del Tour</string>
+    <string name="descripcion_del_tour">Descripcion Del Tour</string>
+    <string name="todo">TODO</string>
+    <string name="titulo_del_tour">Titulo del Tour</string>
 </resources>

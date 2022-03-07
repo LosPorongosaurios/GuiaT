@@ -55,7 +55,6 @@ class LoginFragment : Fragment() {
             Toast.makeText(requireContext(), "Email no encontrado", Toast.LENGTH_SHORT).show()
         } else if (loginBinding.passwordlEditText.text.toString() == user.password) {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
-            //activity?.finish()
         } else {
             Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
         }
