@@ -18,7 +18,7 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         registerBinding = FragmentRegisterBinding.inflate(inflater, container, false)
         registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         return registerBinding.root

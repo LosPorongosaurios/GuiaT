@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-          //  R.id.menu_sign_out -> goToLoginActivity()
+          // R.id.menu_sign_out -> goToLoginActivity()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, LoginFragment::class.java)
         intent.putExtra("email", emailReceived)
         intent.putExtra("password", passwordReceived)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 }

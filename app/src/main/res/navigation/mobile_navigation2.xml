@@ -3,21 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/detailFragment2">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.sergio.guiat.ui.drawer.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/galleryFragment"
-        android:name="com.sergio.guiat.ui.drawer.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
-        android:id="@+id/slideshowFragment"
-        android:name="com.sergio.guiat.ui.drawer.ui.slideshow.SlideshowFragment"
-        android:label="fragment_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/detailFragment2"
+        android:name="com.sergio.guiat.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment2_to_drawerActivity"
+            app:destination="@id/drawerActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/drawerActivity"
+        android:name="com.sergio.guiat.ui.drawer.DrawerActivity"
+        android:label="app_bar_drawer"
+        tools:layout="@layout/app_bar_drawer" />
 </navigation>

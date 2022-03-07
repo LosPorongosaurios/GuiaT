@@ -17,7 +17,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+
+    <string name="example_title">El Sicoanalista</string>
+    <string name="example_author">John Katzenbach</string>
+
+    <string name="tours_list">Tours</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="cel">Celular</string>
