@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512911991462",
+    "project_id": "guiat-3f464",
+    "storage_bucket": "guiat-3f464.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512911991462:android:0461b4cb6c9ea927f28a67",
+        "android_client_info": {
+          "package_name": "com.sergio.guiat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512911991462-dvebv38cr2t2icm7btfndo21qeml0sn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFnV1OOp3ZbH1ODCDhclP92-U90guw0q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512911991462-dvebv38cr2t2icm7btfndo21qeml0sn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

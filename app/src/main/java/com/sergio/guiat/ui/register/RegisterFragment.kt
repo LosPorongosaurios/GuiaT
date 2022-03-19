@@ -15,17 +15,20 @@ class RegisterFragment : Fragment() {
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var registerBinding: FragmentRegisterBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         registerBinding = FragmentRegisterBinding.inflate(inflater, container, false)
-        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
         return registerBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         registerViewModel.msgDone.observe(viewLifecycleOwner) { result ->
             onMsgDoneSubscribe(result)
@@ -34,6 +37,7 @@ class RegisterFragment : Fragment() {
         registerViewModel.dataValidated.observe(viewLifecycleOwner) { result ->
             onDataValidatedSubscribe(result)
         }
+
 
         with(registerBinding) {
             registerButton.setOnClickListener {
@@ -56,7 +60,7 @@ class RegisterFragment : Fragment() {
             val cel  = celEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            registerViewModel.saveUser(name,email,cel,password)
+            registerViewModel.registerUser(name,email,cel,password)
 
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
 
@@ -71,6 +75,7 @@ class RegisterFragment : Fragment() {
             Toast.LENGTH_SHORT
         ).show()
     }
+
 
 
 }
