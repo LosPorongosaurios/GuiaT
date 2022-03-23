@@ -1,9 +1,13 @@
 package com.sergio.guiat.ui.register
 
+import android.widget.Toast
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.sergio.guiat.server.User
 import com.sergio.guiat.server.serverrepository.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -14,6 +18,12 @@ import java.util.regex.Pattern
 class RegisterViewModel : ViewModel() {
 
     private val usersRepository = UsersRepository()
+
+    private val msg: MutableLiveData<String> = MutableLiveData()
+    val msgDone: LiveData<String> = msg
+
+    private val dataValidate: MutableLiveData<Boolean> = MutableLiveData()
+    val dataValidated: LiveData<Boolean> = dataValidate
 
     private val errorMsg: MutableLiveData<String?> = MutableLiveData()
     val errorMsgDone: LiveData<String?> = errorMsg
@@ -29,20 +39,24 @@ class RegisterViewModel : ViewModel() {
                 "The given password is invalid. [ Password should be at least 6 characters ]" -> errorMsg.postValue("La contraseña debe tener mínimo 6 digitos")
                 "The email address is badly formatted." -> errorMsg.postValue("El formato de email es incorrecto")
                 "A network error (such as timeout, interrupted connection or unreachable host) has occurred." -> errorMsg.postValue("No tiene conexión a internet")
-                else -> registerSucess.postValue(result)
+                else -> { registerSucess.postValue(result)
+                    createUser(uid = result , name = name , email = email , cel = cel)}
             }
         }
     }
 
-    fun createUser(uid: String?, toString: String) {
+    fun createUser(uid: String?,name: String , email: String, cel: String ) {
 
+        val db = Firebase.firestore
+        val user = User(uid = uid, name = name ,email = email, cel = cel )
+        uid?.let { uid ->
+            db.collection("users").document(uid).set(user)
+                .addOnSuccessListener {
+                    //Toast.makeText(baseContext, "Usuario creado exitosamente", Toast.LENGTH_SHORT).show()
+                }
+        }
 
     }
-    private val msg: MutableLiveData<String> = MutableLiveData()
-    val msgDone: LiveData<String> = msg
-
-    private val dataValidate: MutableLiveData<Boolean> = MutableLiveData()
-    val dataValidated: LiveData<Boolean> = dataValidate
 
     val passwordRegul = Pattern.compile(
         "^" +
@@ -82,31 +96,9 @@ class RegisterViewModel : ViewModel() {
 
             dataValidate.value = true
 
-            /*GlobalScope.launch(Dispatchers.IO){
-                      usersRepository.saveUser(name,email,cel,password)
-                    }*/
+
         }
     }
 }
-/*
 
-
-class RegisterViewModel : ViewModel() {
-
-    private val usersRepository = UsersRepository()
-
-    fun registerUser(email: String, password: String) {
-        GlobalScope.launch(Dispatchers.IO) {
-            usersRepository.registerUser(email, password)
-        }
-    }
-
-}*/
-
-/*
- fun saveUser(name: String, email: String, cel: String, password: String) {
-     GlobalScope.launch(Dispatchers.IO) {
-         usersRepository.saveUser(name, email, cel, password)
-     }
- }*/
 

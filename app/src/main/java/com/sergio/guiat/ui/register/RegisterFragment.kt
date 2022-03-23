@@ -1,6 +1,7 @@
 package com.sergio.guiat.ui.register
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.sergio.guiat.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -39,6 +42,7 @@ class RegisterFragment : Fragment() {
         }
 
 
+
         with(registerBinding) {
             registerButton.setOnClickListener {
                 registerViewModel.validateFields(
@@ -57,10 +61,10 @@ class RegisterFragment : Fragment() {
         with(registerBinding) {
             val name: String = nameEditText.text.toString()
             val email = emailEditText.text.toString()
-            val cel  = celEditText.text.toString()
+            val cel = celEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            registerViewModel.registerUser(name,email,cel,password)
+            registerViewModel.registerUser(name, email, cel, password)
 
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
 
@@ -75,6 +79,7 @@ class RegisterFragment : Fragment() {
             Toast.LENGTH_SHORT
         ).show()
     }
+
 
 
 
