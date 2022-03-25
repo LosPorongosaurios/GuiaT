@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sergio.guiat.R
 import com.sergio.guiat.databinding.CardViewItemRoutesBinding
-//import com.sergio.guiat.databinding.CardViewItemRoutesBinding
-import com.sergio.guiat.local.Users
+import com.sergio.guiat.server.RoutesServer
+import com.squareup.picasso.Picasso
 
 
-/*class RoutesAdapter (
-    private val routesList: ArrayList<Routes>
+class RoutesAdapter (
+    private val routesList: ArrayList<RoutesServer>,
+    private val onItemClicked: (RoutesServer) ->Unit
+
 ) : RecyclerView.Adapter<RoutesAdapter.RoutesViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutesViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.card_view_item_routes, parent, false)
@@ -21,20 +24,28 @@ import com.sergio.guiat.local.Users
     override fun onBindViewHolder(holder: RoutesViewHolder, position: Int) {
         val tour = routesList[position]
         holder.bind(tour)
+        holder.itemView.setOnClickListener{ onItemClicked(routesList[position])}
     }
     override fun getItemCount(): Int = routesList.size
-    fun appendItems(newList: ArrayList<Users>) {
+
+    fun appendItems(newList: ArrayList<RoutesServer>) {
         routesList.clear()
         routesList.addAll(newList)
         notifyDataSetChanged()
     }
-    class RoutesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    class RoutesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = CardViewItemRoutesBinding.bind(itemView)
-        fun bind(routes: Routes) {
+        private val context = binding.root
+        fun bind(route:RoutesServer){
             with(binding){
-                titleTourTextView.text = "Titulo del tour"
-                descriptionTextView.text = "Descripcion del tour"
+                titleTourTextView.text = route.name
+                guideTextView.text = route.guide
+                Picasso.get().load(route.urlPicture).into(posterTourImageView)
             }
         }
+
+
     }
-}*/
+
+}

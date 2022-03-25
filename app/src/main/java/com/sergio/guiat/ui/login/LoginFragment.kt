@@ -32,8 +32,13 @@ class LoginFragment : Fragment() {
             onFindUserDoneSubscribe(result)
         }
 
+
         loginViewModel.msgDone.observe(viewLifecycleOwner) { msg ->
             onMsgDoneSuscribe(msg)
+        }
+
+        loginViewModel.msgLoginDone.observe(viewLifecycleOwner) { msg ->
+            onMsgLoginDoneSuscribe(msg)
         }
 
         loginBinding.registerTextView.setOnClickListener{
@@ -47,14 +52,26 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun onFindUserDoneSubscribe(user: Users?) {
-        if (user == null) {
+    private fun onMsgLoginDoneSuscribe(msgLogin: String?) {
+        Toast.makeText(
+            requireContext(),
+            msgLogin,
+            Toast.LENGTH_SHORT
+        ).show()
+
+    }
+
+    private fun onFindUserDoneSubscribe(boolean: Boolean?) {
+       /* if (user == null) {
             Toast.makeText(requireContext(), "Email no encontrado", Toast.LENGTH_SHORT).show()
         } else if (loginBinding.passwordlEditText.text.toString() == user.password) {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
         } else {
             Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
-        }
+        }*/
+
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
+
     }
 
     private fun onMsgDoneSuscribe(msg: String?) {

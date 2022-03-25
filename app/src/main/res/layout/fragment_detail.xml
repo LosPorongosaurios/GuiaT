@@ -15,7 +15,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Graffiti Tour"
+        android:text="@string/name_tour"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,31 +29,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="Medellin Tours"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
+        android:text="@string/guide_tour"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tour_image_view" />
 
     <ImageView
         android:id="@+id/tour_image_view"
-        android:layout_width="177dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="24dp"
-        android:src="@mipmap/ic_tour"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_tour_text_view" />
-
-    <TextView
-        android:id="@+id/description_text_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Si has venido a Medellín no te puedes ir sin conocer una de sus comunas más famosas, La Comuna 13 al mejor Coste, la cual durante muchos años fue el epicentro de guerras y enfrentamientos de diversos grupos al margen de la ley, pero que hoy es la muestra de que si se puede vivir en esperanza, armonía y paz."
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_tour"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_tour_text_view"
+        tools:ignore="ImageContrastCheck"/>
+
+    <TextView
+        android:id="@+id/guide_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/description_tour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/author_text_view" />
@@ -62,17 +66,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="De Lunes a Viernes 10-14 Sabado y Domingo 8 - 16"
+        android:text="@string/schudele_example"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/schedule_label_text_view" />
 
-    <Button
-        android:id="@+id/reserve_button"
+    <TextView
+        android:id="@+id/schedule_label_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Resevar!"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/schedule"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guide_text_view" />
+
+    <Button
+        android:id="@+id/reserve_now_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reserve_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/schedule_text_view"
+        tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,11 @@
         android:id="@+id/detailFragment2"
         android:name="com.sergio.guiat.ui.detail.DetailFragment"
         android:label="Detalles sobre la ruta"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="routes"
+            app:argType="com.sergio.guiat.server.RoutesServer" />
+    </fragment>
     <fragment
         android:id="@+id/addTourFragment"
         android:name="com.sergio.guiat.ui.add_tour.AddTourFragment"

@@ -25,13 +25,13 @@
     <string name="menu_home">Home</string>
     <string name="cel">Celular</string>
     <string name="routes">Rutas</string>
-    <string name="tour_name">Grafiti Tour</string>
-    <string name="tour_description">Descripcion del Tour</string>
-    <string name="descripcion_del_tour">Descripcion Del Tour</string>
+    <string name="tour_name">Titulo del tour</string>
+    <string name="guide_tour">Guia</string>
+    <string name="description_tour">Descripcion Del Tour</string>
     <string name="todo">TODO</string>
     <string name="titulo_del_tour">Titulo del Tour</string>
     <string name="name_tour">Nombre del tour</string>
-    <string name="schedule">Horario</string>
+    <string name="schedule">Horario:</string>
     <string name="description">Descripción</string>
     <string name="sites">Lugares</string>
     <string name="add">Agregar</string>
@@ -40,4 +40,5 @@
     <string name="profile">Mi Perfil</string>
     <string name="reserve_now">Reservar Ahora!</string>
     <string name="chat">Chatea</string>
+    <string name="schudele_example">De Lunes a Viernes 10-14 Sabado y Domingo 8 - 16</string>
 </resources>
