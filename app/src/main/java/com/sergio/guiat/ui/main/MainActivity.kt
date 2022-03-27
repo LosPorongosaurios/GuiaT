@@ -15,25 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(mainBinding.root)
 
 
-      /*  with(mainBinding){
-            viewMailTextView.text = emailReceived
-        }*/
 
 
     }
-/*
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_overflow, menu)
-        return true
-    }*/
 
-/*
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-          // R.id.menu_sign_out -> goToLoginActivity()
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
 
 
 }

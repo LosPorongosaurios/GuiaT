@@ -40,7 +40,7 @@ class RoutesAdapter (
         fun bind(route:RoutesServer){
             with(binding){
                 titleTourTextView.text = route.name
-                guideTextView.text = route.guide
+                guideCardTextView.text = route.guide
                 Picasso.get().load(route.urlPicture).into(posterTourImageView)
             }
         }

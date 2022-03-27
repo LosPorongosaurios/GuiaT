@@ -34,7 +34,7 @@ class RegisterViewModel : ViewModel() {
     fun registerUser(name: String, email: String,cel: String, password: String) {
 
         GlobalScope.launch(Dispatchers.IO) {
-            when (val result = usersRepository.registerUser(email, password)) {
+            when (val result = usersRepository.registerUser(email, password,name)) {
                 "The email address is already in use by another account." -> errorMsg.postValue("Ya existe una cuenta con ese correo electrónico")
                 "The given password is invalid. [ Password should be at least 6 characters ]" -> errorMsg.postValue("La contraseña debe tener mínimo 6 digitos")
                 "The email address is badly formatted." -> errorMsg.postValue("El formato de email es incorrecto")

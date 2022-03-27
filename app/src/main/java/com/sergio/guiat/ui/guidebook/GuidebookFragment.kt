@@ -1,10 +1,13 @@
 package com.sergio.guiat.ui.guidebook
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -51,7 +54,6 @@ class GuidebookFragment : Fragment() {
 
 
 
-
     private fun onTourItemClicked(route: RoutesServer) {
         findNavController().navigate(GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2(route))
         route.name?.let { Log.d("nombreView",it) }
@@ -60,9 +62,8 @@ class GuidebookFragment : Fragment() {
     private fun onLoadToursDoneSubscribe(routesListLoaded: ArrayList<RoutesServer>) {
         routesList = routesListLoaded
         routesAdapter.appendItems(routesList)
-
-
     }
+
 
 
 }
