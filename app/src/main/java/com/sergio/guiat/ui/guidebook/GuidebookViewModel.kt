@@ -20,6 +20,7 @@ class GuidebookViewModel : ViewModel() {
     val loadToursDone: LiveData<ArrayList<RoutesServer>> = loadTours
 
     fun loadTours(){
+        toursList.clear()
         GlobalScope.launch(Dispatchers.IO){
             val querySnapshot = routesRepository.loadTours()
             for ( document in querySnapshot){

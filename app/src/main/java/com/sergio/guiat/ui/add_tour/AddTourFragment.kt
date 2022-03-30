@@ -62,11 +62,11 @@ class AddTourFragment : Fragment() {
     }
 
     private fun fileManager() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        val intent = Intent(Intent.ACTION_VIEW)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
 
         }
-        intent.type = "*/*"
+        intent.type = "image/*"
         startActivityForResult(intent, fileResult)
     }
 

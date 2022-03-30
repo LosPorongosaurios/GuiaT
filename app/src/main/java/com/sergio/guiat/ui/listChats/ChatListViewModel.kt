@@ -23,12 +23,13 @@ class ChatListViewModel : ViewModel() {
 
     private var chatsList : ArrayList<ChatModel> = ArrayList()
 
-    val loadChats : MutableLiveData<ArrayList<ChatModel>> = MutableLiveData()
-    val loadChatsDone : LiveData<ArrayList<ChatModel>> = loadChats
+    val loadChats : MutableLiveData<MutableList<ChatModel>> = MutableLiveData()
+    val loadChatsDone : LiveData<MutableList<ChatModel>> = loadChats
 
     fun loadChats() {
 
         GlobalScope.launch(Dispatchers.IO){
+            chatsList.clear()
             val querySnapshot = chatRepository.loadChats(uid)
             for (document in querySnapshot){
                 val chats : ChatModel = document.toObject<ChatModel>()

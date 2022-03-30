@@ -12,7 +12,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.R
 import com.sergio.guiat.databinding.FragmentChatBinding
 import com.sergio.guiat.models.MessageModel
 
@@ -38,62 +37,51 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
+       chatViewModel.loadMessagesDone.observe(viewLifecycleOwner){result ->
+            onLoadMessagesDoneSusbcribe(result)
+        }
 
+        chatViewModel.uploadMessagesDone.observe(viewLifecycleOwner){ result ->
+            onUploadMessagesDoneSusbcribe(result)
+        }
+
+        initViews()
 
     }
 
+
     private fun initViews() {
-        chatBinding.messagesRecylerView.layoutManager = LinearLayoutManager(this@ChatFragment.requireContext())
+        chatBinding.messagesRecylerView.layoutManager =
+            LinearLayoutManager(this@ChatFragment.requireContext())
         chatBinding.messagesRecylerView.adapter = MessageAdapter(chatViewModel.getCurrentEmail())
 
-        chatBinding.sendMessageButton.setOnClickListener{
+        chatBinding.sendMessageButton.setOnClickListener {
             sendMessage()
         }
 
-        val chatRef = db.collection("chats").document(args.chatId)
 
-        chatRef.collection("messages").orderBy("dob", Query.Direction.ASCENDING)
-            .get()
-            .addOnSuccessListener { messages ->
-                val listMessages = messages.toObjects(MessageModel::class.java)
-                (chatBinding.messagesRecylerView.adapter as MessageAdapter).setData(listMessages)
-            }
+        chatViewModel.loadMessage(args.chatId)
+        chatViewModel.uploadMessage(args.chatId)
 
-        chatRef.collection("messages").orderBy("dob", Query.Direction.ASCENDING)
-            .addSnapshotListener { messages, error ->
-                if(error == null){
-                    messages?.let {
-                        val listMessages = it.toObjects(MessageModel::class.java)
-                        (chatBinding.messagesRecylerView.adapter as MessageAdapter).setData(listMessages)
-                    }
-                }
-            }
-
-       // chatViewModel.loadMessage(args.chat.id)
 
     }
 
-   /* private fun sendMessage() {
+    private fun onLoadMessagesDoneSusbcribe(listMessages: MutableList<MessageModel>) {
+        (chatBinding.messagesRecylerView.adapter as MessageAdapter).setData(listMessages)
+    }
+    private fun onUploadMessagesDoneSusbcribe(listMessages: MutableList<MessageModel>) {
+        (chatBinding.messagesRecylerView.adapter as MessageAdapter).setData(listMessages)
+    }
+
+    private fun sendMessage() {
         val message = MessageModel(
             message = chatBinding.messageTextView.text.toString(),
             from = chatViewModel.getCurrentEmail()
         )
-        chatViewModel.sendMessage(message)
+        chatViewModel.sendMessage(message,args.chatId)
         chatBinding.messageTextView.setText("")
-    }*/
-
-    private fun sendMessage(){
-        val message = MessageModel(
-            message = chatBinding.messageTextView.text.toString(),
-            from = auth.currentUser?.email.toString()
-        )
-
-        db.collection("chats").document(args.chatId).collection("messages").document().set(message)
-
-        chatBinding.messageTextView.setText("")
-
-
     }
+
+
 
 }

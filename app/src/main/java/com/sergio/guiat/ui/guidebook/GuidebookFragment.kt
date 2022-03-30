@@ -56,7 +56,6 @@ class GuidebookFragment : Fragment() {
     }
 
 
-
     private fun onTourItemClicked(route: RoutesServer) {
         findNavController().navigate(GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2(route))
        // route.name?.let { Log.d("nombreView",it) }

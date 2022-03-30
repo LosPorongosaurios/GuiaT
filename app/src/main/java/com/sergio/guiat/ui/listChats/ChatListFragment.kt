@@ -22,7 +22,7 @@ class ChatListFragment : Fragment() {
     private lateinit var chatListBinding: FragmentChatListBinding
     private lateinit var chatListViewModel: ChatListViewModel
     private lateinit var chatListAdapter: ChatListAdapter
-    private var chatList: ArrayList<ChatModel> = ArrayList()
+    private var chatList: MutableList<ChatModel> = mutableListOf()
     private var user : String = Firebase.auth.currentUser?.email.toString()
 
     override fun onCreateView(
@@ -53,7 +53,7 @@ class ChatListFragment : Fragment() {
 
     }
 
-    private fun onLoadChatsDoneSusbscribe(chatLoaded: ArrayList<ChatModel>) {
+    private fun onLoadChatsDoneSusbscribe(chatLoaded: MutableList<ChatModel>) {
         chatList = chatLoaded
         chatListAdapter.appendItems(chatList)
     }

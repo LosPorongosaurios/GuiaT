@@ -15,7 +15,7 @@ class RoutesAdapter (
 
 ) : RecyclerView.Adapter<RoutesAdapter.RoutesViewHolder>() {
 
-    private val routesList: MutableList<RoutesServer> = mutableListOf()
+    private val routesList: ArrayList<RoutesServer> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutesViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.card_view_item_routes, parent, false)
