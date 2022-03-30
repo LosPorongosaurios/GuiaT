@@ -13,9 +13,9 @@ class ChatListAdapter(
     private val onItemClicked: (ChatModel) -> Unit
 ) : RecyclerView.Adapter<ChatListAdapter.ChatListViewHolder>() {
 
-    private val chatList : MutableList<ChatModel> = mutableListOf()
+  //  private val chatList : MutableList<ChatModel> = mutableListOf()
 
-    //var chatList: List<ChatModel> = emptyList()
+    private var chatList: MutableList<ChatModel> = mutableListOf()
 
     /*fun setData(list: List<ChatModel>){
         chatList = list
@@ -34,7 +34,7 @@ class ChatListAdapter(
         holder.itemView.setOnClickListener{ onItemClicked(chatList[position])}
     }
 
-    fun appendItems(newList : ArrayList<ChatModel>){
+    fun appendItems(newList : List<ChatModel>){
         chatList.clear()
         chatList.addAll(newList)
         notifyDataSetChanged()
