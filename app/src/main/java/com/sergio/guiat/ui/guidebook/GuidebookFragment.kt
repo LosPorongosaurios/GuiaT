@@ -29,7 +29,10 @@ class GuidebookFragment : Fragment() {
     ): View {
         guidebookBinding = FragmentGuidebookBinding.inflate(inflater, container, false)
         guidebookViewModel = ViewModelProvider(this)[GuidebookViewModel::class.java]
+
+        //guidebookViewModel.loadTours()
         return guidebookBinding.root
+
     }
 
 
@@ -42,7 +45,7 @@ class GuidebookFragment : Fragment() {
 
         guidebookViewModel.loadTours()
 
-        routesAdapter = RoutesAdapter(routesList, onItemClicked = {onTourItemClicked(it)})
+        routesAdapter = RoutesAdapter( onItemClicked = {onTourItemClicked(it)})
 
         guidebookBinding.routesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@GuidebookFragment.requireContext())
@@ -56,11 +59,12 @@ class GuidebookFragment : Fragment() {
 
     private fun onTourItemClicked(route: RoutesServer) {
         findNavController().navigate(GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2(route))
-        route.name?.let { Log.d("nombreView",it) }
+       // route.name?.let { Log.d("nombreView",it) }
     }
 
     private fun onLoadToursDoneSubscribe(routesListLoaded: ArrayList<RoutesServer>) {
         routesList = routesListLoaded
+        Log.d("list",routesList.toString())
         routesAdapter.appendItems(routesList)
     }
 

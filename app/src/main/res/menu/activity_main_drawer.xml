@@ -19,5 +19,10 @@
             android:icon="@drawable/ic_tour"
             android:title="@string/offer_tour"/>
 
+        <item
+            android:id="@+id/chatListFragment"
+            android:icon="@drawable/ic_message"
+            android:title="Chats"/>
+
     </group>
 </menu>

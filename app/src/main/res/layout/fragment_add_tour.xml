@@ -19,6 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/tour_photo_image_view"
+        android:layout_width="116dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_add_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/offer_tour_text_view" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_tour_text_input_layout"
         android:layout_width="0dp"
@@ -28,7 +40,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offer_tour_text_view">
+        app:layout_constraintTop_toBottomOf="@+id/tour_photo_image_view">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_tour_edit_text"
@@ -36,26 +48,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/name_tour"
             android:textColorHint="#616161"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/schedule_text_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sites_text_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/schedule_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/schedule"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,6 +89,27 @@
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/schedule_text_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sites_text_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/schedule_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/schedule"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
@@ -107,4 +120,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/schedule_text_input_layout"
         tools:ignore="TextContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

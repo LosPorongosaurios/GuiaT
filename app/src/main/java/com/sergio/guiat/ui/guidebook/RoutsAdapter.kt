@@ -11,11 +11,11 @@ import com.squareup.picasso.Picasso
 
 
 class RoutesAdapter (
-    private val routesList: ArrayList<RoutesServer>,
     private val onItemClicked: (RoutesServer) ->Unit
 
 ) : RecyclerView.Adapter<RoutesAdapter.RoutesViewHolder>() {
 
+    private val routesList: MutableList<RoutesServer> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutesViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.card_view_item_routes, parent, false)

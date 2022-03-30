@@ -1,33 +1,36 @@
 package com.sergio.guiat.ui.add_tour
 
-import android.provider.ContactsContract
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.auth.User
-import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.sergio.guiat.GuiaTProject.Companion.database
 import com.sergio.guiat.server.serverrepository.RoutesServerRepository
 import com.sergio.guiat.server.serverrepository.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.concurrent.timerTask
 
-const val DEFAULT_DELAY = 2000L
 
 class AddTourViewModel : ViewModel() {
 
     private val routeServerRepository = RoutesServerRepository()
-    private var auth: FirebaseAuth = Firebase.auth
-    private var guideTour : String? = null
+    private var guideTour: String? = null
+
+    private val database = Firebase.database
+    lateinit var urlPicture: String
+    private val myRef = database.getReference("user")
+
     val usersRepository = UsersRepository()
+    private val guideMail: String = Firebase.auth.currentUser?.email.toString()
 
     private val msg: MutableLiveData<String> = MutableLiveData()
     val msgDone: LiveData<String> = msg
@@ -36,8 +39,7 @@ class AddTourViewModel : ViewModel() {
     val dataValidated: LiveData<Boolean> = dataValidate
 
 
-
-    fun validateFields(nameTour: String, description: String, sites: String, schedule : String) {
+    fun validateFields(nameTour: String, description: String, sites: String, schedule: String) {
         if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty()) {
             msg.value = "Debe digitar todos los campos"
         } else {
@@ -49,38 +51,53 @@ class AddTourViewModel : ViewModel() {
         nameTour: String,
         description: String,
         sites: String,
-        schedule: String
+        schedule: String,
+        urlPicture : String
 
-    ){
-        searchUser()
+    ) {
 
-        GlobalScope.launch(Dispatchers.IO){
+        GlobalScope.launch(Dispatchers.IO) {
+             val result = usersRepository.searchUser()
+            result.getString("name")?.let { Log.d("name", it) }
+                guideTour = result.getString("name")
             guideTour?.let {
-                routeServerRepository.saveTour(nameTour,
-                    it,description,sites,schedule)
+                routeServerRepository.saveTour(
+                    nameTour,
+                    it, guideMail, description, sites, schedule, urlPicture
+                )
             }
 
-        }
-
-
+       }
     }
 
-    private fun searchUser() {
-        val email : String = auth.currentUser?.email.toString()
-        GlobalScope.launch(Dispatchers.IO){
-            val result = usersRepository.searchUser()
+    fun fileUpload(mUri: Uri) {
+        val folder: StorageReference = FirebaseStorage.getInstance().reference.child("tours")
+        val path = mUri.lastPathSegment.toString()
+        val fileName: StorageReference = folder.child(path.substring(path.lastIndexOf('/') + 1))
 
-            for (document in result){
-                val user : com.sergio.guiat.server.User = document.toObject<com.sergio.guiat.server.User>()
-                if (email == user.email){
-                    guideTour = user.name
-                    guideTour?.let { Log.d("holaaaa", it) }
-                }
+        fileName.putFile(mUri).addOnSuccessListener {
+            fileName.downloadUrl.addOnSuccessListener { uri ->
+                val hashMap = HashMap<String, String>()
+                hashMap["link"] = java.lang.String.valueOf(uri)
+
+                urlPicture = uri.toString()
+
+
+                myRef.child(myRef.push().key.toString()).setValue(hashMap)
+
+                Log.i("message", "file upload successfully")
+
+            }.addOnFailureListener {
+                Log.i("message", "file upload error")
             }
         }
     }
-
-
 
 
 }
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,9 +33,9 @@ class UsersRepository {
         }
     }
 
-    suspend fun searchUser(): QuerySnapshot {
+    suspend fun searchUser() : DocumentSnapshot {
         return withContext(Dispatchers.IO){
-            db.collection("users").get().await()
+            db.collection("users").document(auth.currentUser?.uid.toString()).get().await()
         }
     }
 }

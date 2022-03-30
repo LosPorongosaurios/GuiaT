@@ -22,6 +22,9 @@
         <argument
             android:name="routes"
             app:argType="com.sergio.guiat.server.RoutesServer" />
+        <action
+            android:id="@+id/action_detailFragment2_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTourFragment"
@@ -33,4 +36,25 @@
         android:name="com.sergio.guiat.ui.profile.ProfileFragment"
         android:label="Mi Perfil"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.sergio.guiat.ui.listChats.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.sergio.guiat.ui.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="chatId"
+            app:argType="string" />
+        <argument
+            android:name="user"
+            app:argType="string" />
+    </fragment>
 </navigation>

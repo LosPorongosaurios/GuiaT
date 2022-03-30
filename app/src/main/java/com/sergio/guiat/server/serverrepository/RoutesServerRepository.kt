@@ -15,9 +15,11 @@ class RoutesServerRepository {
     fun saveTour(
       nameTour : String,
       guide : String,
+      guideMail : String,
       description : String,
       sites : String,
-      schedule : String
+      schedule : String,
+      urlPicture : String
     ){
         val documentTour = db.collection("tours").document()
 
@@ -25,9 +27,11 @@ class RoutesServerRepository {
             id = documentTour.id,
             name = nameTour,
             guide = guide,
+            guideMail = guideMail,
             description = description,
             sites = sites,
-            schedule = schedule
+            schedule = schedule,
+            urlPicture = urlPicture
         )
 
         db.collection("tours").document(documentTour.id).set(routes)

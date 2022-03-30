@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Esteban Rodriguies O"
+        android:text="Esteban Rodriguez O"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cel_user_edit_text" />
 
     <TextView
-        android:id="@+id/tours_done_edit_texto"
+        android:id="@+id/tours_done_edit_text"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
