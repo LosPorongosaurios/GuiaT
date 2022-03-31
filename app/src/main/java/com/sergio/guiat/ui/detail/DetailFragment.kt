@@ -12,10 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.sergio.guiat.databinding.FragmentDetailBinding
-import com.sergio.guiat.models.ChatModel
-import com.sergio.guiat.server.serverrepository.ChatsRepository
 import com.squareup.picasso.Picasso
-import java.sql.Struct
 import java.util.*
 
 class DetailFragment : Fragment() {
@@ -55,24 +52,45 @@ class DetailFragment : Fragment() {
 
         detailBinding.reserveNowButton.setOnClickListener{
 
+            detailViewModel.isChatCreated(args.routes.guideMail.toString())
+
+            detailViewModel.loadChatIdDone.observe(viewLifecycleOwner){ result ->
+                onLoadChatsDoneSusbscribe(result)
+            }
+
             detailViewModel.searchOtherUserUid(args.routes.guideMail.toString())
 
             detailViewModel.findOtherUserUidDone.observe(viewLifecycleOwner){ result ->
                 onFinOtherUserUidDoneSubscribe(result)
             }
+
+
+
         }
 
+    }
+
+    private fun onLoadChatsDoneSusbscribe(chatId: String?) {
+        if (chatId == null){
+            Toast.makeText(requireContext(),"Id del Chat no encontrado", Toast.LENGTH_SHORT).show()
+        }else{
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragment2ToChatFragment(chatId,user))
+        }
     }
 
     private fun onFinOtherUserUidDoneSubscribe(otherUserUidd: String?) {
         if (otherUserUidd == null){
             Toast.makeText(requireContext(),"Uid del usuario no encontrado", Toast.LENGTH_SHORT).show()
         }else{
+            if (detailViewModel.chatCreated == true){
+                detailViewModel.isChatCreated(args.routes.guideMail.toString())
+            }else{
             otherUserUid = otherUserUidd
             detailViewModel.newChat(args.routes.guideMail.toString(), otherUserUid)
-            //chatRepository.newChat(args.routes.guideMail.toString(), otherUserUid)
+
             chatId = detailViewModel.getChatId()
             findNavController().navigate(DetailFragmentDirections.actionDetailFragment2ToChatFragment(chatId,user))
+        }
         }
     }
 

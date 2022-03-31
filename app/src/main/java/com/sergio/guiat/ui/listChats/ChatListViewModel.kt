@@ -23,7 +23,7 @@ class ChatListViewModel : ViewModel() {
 
     private var chatsList : ArrayList<ChatModel> = ArrayList()
 
-    val loadChats : MutableLiveData<MutableList<ChatModel>> = MutableLiveData()
+    private val loadChats : MutableLiveData<MutableList<ChatModel>> = MutableLiveData()
     val loadChatsDone : LiveData<MutableList<ChatModel>> = loadChats
 
     fun loadChats() {
