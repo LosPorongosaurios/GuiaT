@@ -1,5 +1,7 @@
 package com.sergio.guiat.ui.register
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import com.sergio.guiat.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
 
+    private val fileResult = 1
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var registerBinding: FragmentRegisterBinding
 
@@ -42,7 +45,6 @@ class RegisterFragment : Fragment() {
         }
 
 
-
         with(registerBinding) {
             registerButton.setOnClickListener {
                 registerViewModel.validateFields(
@@ -53,6 +55,36 @@ class RegisterFragment : Fragment() {
                     passwordlEditText.text.toString(),
 
                 )
+            }
+        }
+
+        registerBinding.porfilePhotoImageView.setOnClickListener {
+            fileManager()
+        }
+    }
+
+    private fun fileManager() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+
+        }
+        intent.type = "image/*"
+        startActivityForResult(intent, fileResult)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == fileResult) {
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                val clipData = data.clipData
+                if (clipData != null) {
+                    for (i in 0 until clipData.itemCount) {
+                        val uri = clipData.getItemAt(i).uri
+                        uri?.let { registerViewModel.fileUpload(it) }
+                    }
+                } else {
+                    val uri = data.data
+                    uri?.let { registerViewModel.fileUpload(it) }
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -53,6 +54,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.8'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
     def room_version = "2.4.1"
 
