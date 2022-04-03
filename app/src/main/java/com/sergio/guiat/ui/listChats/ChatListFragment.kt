@@ -10,11 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.R
 import com.sergio.guiat.databinding.FragmentChatListBinding
-import com.sergio.guiat.databinding.FragmentLoginBinding
-import com.sergio.guiat.models.ChatModel
-import com.sergio.guiat.ui.login.LoginViewModel
+import com.sergio.guiat.server.ChatModel
 
 class ChatListFragment : Fragment() {
 

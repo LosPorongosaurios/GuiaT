@@ -7,57 +7,37 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/name_user_edit_text"
+        android:id="@+id/name_user_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Esteban Rodriguez O"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
 
     <TextView
-        android:id="@+id/mail_user_edit_text"
+        android:id="@+id/email_user_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Correo:esteban@gmail.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_user_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/name_user_text_view" />
 
     <TextView
-        android:id="@+id/cel_user_edit_text"
+        android:id="@+id/cel_user_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cel:0123456789"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail_user_edit_text" />
+        android:text="0123456789"
+        app:layout_constraintStart_toEndOf="@+id/cel_label_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/email_user_text_view" />
 
     <TextView
-        android:id="@+id/travels_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="20853 Viajes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cel_user_edit_text" />
-
-    <TextView
-        android:id="@+id/views_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="1000000 Views"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cel_user_edit_text" />
-
-    <TextView
-        android:id="@+id/tours_done_edit_text"
+        android:id="@+id/tours_label_text_view"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,10 +45,10 @@
         android:text="@string/tours_done"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travels_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/cel_label_text_view" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/profile_image_view"
         android:layout_width="163dp"
         android:layout_height="157dp"
         android:layout_marginTop="32dp"
@@ -76,5 +56,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cel_label_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/cel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_user_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

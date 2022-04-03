@@ -8,12 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.sergio.guiat.databinding.FragmentChatBinding
-import com.sergio.guiat.models.MessageModel
+import com.sergio.guiat.server.MessageModel
 
 class ChatFragment : Fragment() {
 
@@ -21,8 +17,6 @@ class ChatFragment : Fragment() {
     private lateinit var chatViewModel: ChatViewModel
     private lateinit var messageAdapter: MessageAdapter
     private val args : ChatFragmentArgs by navArgs()
-    private var auth = Firebase.auth
-    private var db = Firebase.firestore
 
 
     override fun onCreateView(

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sergio.guiat.R
 import com.sergio.guiat.databinding.CardViewItemMessageBinding
-import com.sergio.guiat.models.MessageModel
+import com.sergio.guiat.server.MessageModel
 
 class MessageAdapter(
     //private var messageList: ArrayList<MessageModel>, //= emptyList(),

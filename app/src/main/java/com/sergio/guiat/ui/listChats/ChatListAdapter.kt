@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sergio.guiat.R
 import com.sergio.guiat.databinding.CardViewItemChatsBinding
-import com.sergio.guiat.models.ChatModel
+import com.sergio.guiat.server.ChatModel
 
 class ChatListAdapter(
    // private var chatList: ArrayList<ChatModel>, //= emptyList(),
@@ -48,7 +48,7 @@ class ChatListAdapter(
     class ChatListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = CardViewItemChatsBinding.bind(itemView)
         private val context = binding.root
-        fun bind(chat:ChatModel){
+        fun bind(chat: ChatModel){
             with(binding){
                 chatNameTextView.text = chat.name
                 usersTextView.text = chat.users.toString()

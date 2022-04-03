@@ -1,4 +1,4 @@
-package com.sergio.guiat.ui.profile
+package com.sergio.guiat.ui.drawer
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class ProfileViewModel : ViewModel() {
+class DrawerViewModel : ViewModel() {
+
 
     private val usersRepository = UsersRepository()
 
@@ -25,4 +26,5 @@ class ProfileViewModel : ViewModel() {
             loadProfile.postValue(user)
         }
     }
+
 }

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sergio.guiat.databinding.FragmentProfileBinding
+import com.sergio.guiat.server.User
+import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +25,27 @@ class ProfileFragment : Fragment() {
         return profileBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        profileViewModel.loadProfileDone.observe(viewLifecycleOwner){ result ->
+            onLoadProfileDoneSubscribe(result)
+        }
+
+        profileViewModel.loadProfile()
+
+    }
+
+    private fun onLoadProfileDoneSubscribe(user: User?) {
+
+        with(profileBinding){
+            nameUserTextView.text = user?.name.toString()
+            emailUserTextView.text = user?.email.toString()
+            celUserTextView.text = user?.email.toString()
+            Picasso.get().load(user?.urlPicture).into(profileImageView)
+        }
+
+    }
 
 
 }

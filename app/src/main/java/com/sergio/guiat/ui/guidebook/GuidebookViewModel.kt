@@ -16,7 +16,7 @@ class GuidebookViewModel : ViewModel() {
 
     private var toursList: ArrayList<RoutesServer> = ArrayList()
 
-    val loadTours : MutableLiveData<ArrayList<RoutesServer>> = MutableLiveData()
+    private val loadTours : MutableLiveData<ArrayList<RoutesServer>> = MutableLiveData()
     val loadToursDone: LiveData<ArrayList<RoutesServer>> = loadTours
 
     fun loadTours(){

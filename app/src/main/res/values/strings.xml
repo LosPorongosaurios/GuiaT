@@ -23,7 +23,7 @@
 
     <string name="tours_list">Tours</string>
     <string name="menu_home">Home</string>
-    <string name="cel">Celular</string>
+    <string name="cel">Celular:</string>
     <string name="routes">Rutas</string>
     <string name="tour_name">Titulo del tour</string>
     <string name="guide_tour">Guia</string>

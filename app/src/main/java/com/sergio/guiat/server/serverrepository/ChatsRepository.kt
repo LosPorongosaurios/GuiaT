@@ -2,12 +2,11 @@ package com.sergio.guiat.server.serverrepository
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.models.ChatModel
+import com.sergio.guiat.server.ChatModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 

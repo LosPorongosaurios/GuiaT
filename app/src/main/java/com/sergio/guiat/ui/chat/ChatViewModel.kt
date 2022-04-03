@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.models.MessageModel
+import com.sergio.guiat.server.MessageModel
 import com.sergio.guiat.server.serverrepository.ChatsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.models.ChatModel
+import com.sergio.guiat.server.ChatModel
 import com.sergio.guiat.server.serverrepository.ChatsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class ChatListViewModel : ViewModel() {
 
-    val chatRepository = ChatsRepository()
+    private val chatRepository = ChatsRepository()
 
     private val auth: FirebaseAuth = Firebase.auth
     private val user  = auth.currentUser?.email

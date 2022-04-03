@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -20,21 +22,23 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.sergio.guiat.R
 import com.sergio.guiat.databinding.ActivityDrawerBinding
-import com.sergio.guiat.ui.login.LoginFragment
+import com.sergio.guiat.server.User
 import com.sergio.guiat.ui.main.MainActivity
+import com.squareup.picasso.Picasso
 
 
 class DrawerActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityDrawerBinding
+    private lateinit var drawerViewModel: DrawerViewModel
     private var auth: FirebaseAuth = Firebase.auth
-   // private var manager : FragmentManager =
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         binding = ActivityDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -57,8 +61,25 @@ class DrawerActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        val headerView : View = navView.getHeaderView(0)
+
+        drawerViewModel.loadProfileDone.observe(this){ result ->
+            onLoadProfileDoneSubscribe(result,headerView)
+        }
+
+        drawerViewModel.loadProfile()
 
     }
+
+    private fun onLoadProfileDoneSubscribe(user: User?, headerView: View) {
+        val avatarUserImageView : ImageView = headerView.findViewById(R.id.avatar_user_image_view)
+        val mailUserTextView : TextView = headerView.findViewById(R.id.mail_user_text_view)
+
+        mailUserTextView.text = user?.email.toString()
+        Picasso.get().load(user?.urlPicture).into(avatarUserImageView)
+
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -71,7 +92,6 @@ class DrawerActivity : AppCompatActivity() {
             R.id.menu_sign_out -> {
                 auth.signOut()
                 goToLoginActivity()
-
             }
         }
         return super.onOptionsItemSelected(item)

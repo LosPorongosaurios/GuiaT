@@ -50,7 +50,7 @@ class RegisterFragment : Fragment() {
                     emailEditText.text.toString(),
                     celEditText.text.toString(),
                     passwordEditText.text.toString(),
-                    passwordlEditText.text.toString()
+                    passwordlEditText.text.toString(),
 
                 )
             }

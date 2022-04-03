@@ -1,4 +1,4 @@
-package com.sergio.guiat.models
+package com.sergio.guiat.server
 
 import java.util.*
 

@@ -29,7 +29,7 @@ class AddTourViewModel : ViewModel() {
     lateinit var urlPicture: String
     private val myRef = database.getReference("user")
 
-    val usersRepository = UsersRepository()
+    private val usersRepository = UsersRepository()
     private val guideMail: String = Firebase.auth.currentUser?.email.toString()
 
     private val msg: MutableLiveData<String> = MutableLiveData()
@@ -39,10 +39,18 @@ class AddTourViewModel : ViewModel() {
     val dataValidated: LiveData<Boolean> = dataValidate
 
 
-    fun validateFields(nameTour: String, description: String, sites: String, schedule: String) {
+    fun validateFields(
+        nameTour: String,
+        description: String,
+        sites: String,
+        schedule: String,
+        urlPicture: String
+    ) {
         if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty()) {
             msg.value = "Debe digitar todos los campos"
-        } else {
+        }else if (urlPicture.isEmpty()){
+            msg.value = "Debe seleccionar una foto"
+        }else {
             dataValidate.value = true
         }
     }
