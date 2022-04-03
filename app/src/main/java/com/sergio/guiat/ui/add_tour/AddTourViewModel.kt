@@ -44,7 +44,7 @@ class AddTourViewModel : ViewModel() {
         description: String,
         sites: String,
         schedule: String,
-        urlPicture: String
+        urlPicture: String,
     ) {
         if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty() || urlPicture.isEmpty()) {
             msg.value = "Debe digitar todos los campos e incluir una imagen"
@@ -58,7 +58,8 @@ class AddTourViewModel : ViewModel() {
         description: String,
         sites: String,
         schedule: String,
-        urlPicture : String
+        urlPicture: String
+        // urlPicture : String
 
     ) {
 

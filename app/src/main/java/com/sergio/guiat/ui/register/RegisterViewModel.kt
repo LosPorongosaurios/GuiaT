@@ -2,7 +2,6 @@ package com.sergio.guiat.ui.register
 
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -41,24 +40,24 @@ class RegisterViewModel : ViewModel() {
     lateinit var urlPicture: String
     private val myRef = database.getReference("user")
 
-    fun registerUser(name: String, email: String,cel: String, password: String) {
+    fun registerUser(name: String, email: String, cel: String, password: String, urlPicture: String) {
 
         GlobalScope.launch(Dispatchers.IO) {
-            when (val result = usersRepository.registerUser(email, password,name)) {
+            when (val result = usersRepository.registerUser(email, password)) {
                 "The email address is already in use by another account." -> errorMsg.postValue("Ya existe una cuenta con ese correo electrónico")
                 "The given password is invalid. [ Password should be at least 6 characters ]" -> errorMsg.postValue("La contraseña debe tener mínimo 6 digitos")
                 "The email address is badly formatted." -> errorMsg.postValue("El formato de email es incorrecto")
                 "A network error (such as timeout, interrupted connection or unreachable host) has occurred." -> errorMsg.postValue("No tiene conexión a internet")
                 else -> { registerSucess.postValue(result)
-                    createUser(uid = result , name = name , email = email , cel = cel)}
+                    createUser(uid = result , name = name , email = email , cel = cel, urlPicture = urlPicture) }
             }
         }
     }
 
-    fun createUser(uid: String?,name: String , email: String, cel: String ) {
+    fun createUser(uid: String?,name: String , email: String, cel: String , urlPicture: String ) {
 
         val db = Firebase.firestore
-        val user = User(uid = uid, name = name ,email = email, cel = cel )
+        val user = User(uid = uid, name = name ,email = email, cel = cel , urlPicture = urlPicture)
         uid?.let { uid ->
             db.collection("users").document(uid).set(user)
                 .addOnSuccessListener {
@@ -113,10 +112,11 @@ class RegisterViewModel : ViewModel() {
         email: String,
         cel: String,
         password: String,
-        re_password: String
+        re_password: String,
+        urlPicture: String
     ) {
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            msg.value = "Debe digitar nombre , correo , telefono y contraseña"
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || urlPicture.isEmpty()) {
+            msg.value = "Debe digitar nombre , correo , telefono y contraseña, ademas de seleccionar una foto de perfil"
         } else if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
             msg.value = "No es un correo electronico valido"
         } else if (!celRegul.matcher(cel).matches()) {

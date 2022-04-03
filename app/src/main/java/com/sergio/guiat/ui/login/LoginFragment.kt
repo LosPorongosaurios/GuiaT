@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sergio.guiat.databinding.FragmentLoginBinding
-import com.sergio.guiat.local.Users
 
 class LoginFragment : Fragment() {
 
@@ -41,13 +40,16 @@ class LoginFragment : Fragment() {
             onMsgLoginDoneSuscribe(msg)
         }
 
-        loginBinding.registerTextView.setOnClickListener{
+        loginBinding.registerTextView.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
 
         with(loginBinding) {
             loginButton.setOnClickListener {
-                loginViewModel.searchUser(mailEditText.text.toString(),passwordlEditText.text.toString())
+                loginViewModel.searchUser(
+                    mailEditText.text.toString(),
+                    passwordlEditText.text.toString()
+                )
             }
         }
     }
@@ -62,13 +64,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun onFindUserDoneSubscribe(boolean: Boolean?) {
-       /* if (user == null) {
-            Toast.makeText(requireContext(), "Email no encontrado", Toast.LENGTH_SHORT).show()
-        } else if (loginBinding.passwordlEditText.text.toString() == user.password) {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
-        } else {
-            Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
-        }*/
+        /* if (user == null) {
+             Toast.makeText(requireContext(), "Email no encontrado", Toast.LENGTH_SHORT).show()
+         } else if (loginBinding.passwordlEditText.text.toString() == user.password) {
+             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
+         } else {
+             Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
+         }*/
 
         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDrawerActivity2())
 

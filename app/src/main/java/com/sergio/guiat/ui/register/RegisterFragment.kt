@@ -2,8 +2,9 @@ package com.sergio.guiat.ui.register
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.sergio.guiat.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -53,6 +52,7 @@ class RegisterFragment : Fragment() {
                     celEditText.text.toString(),
                     passwordEditText.text.toString(),
                     passwordlEditText.text.toString(),
+                    registerViewModel.urlPicture
 
                 )
             }
@@ -64,7 +64,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun fileManager() {
-        val intent = Intent(Intent.ACTION_VIEW)
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
 
         }
@@ -85,6 +85,10 @@ class RegisterFragment : Fragment() {
                     val uri = data.data
                     uri?.let { registerViewModel.fileUpload(it) }
                 }
+                val uri1 = data.data
+                val bitmap1 : Bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver,uri1)
+
+                registerBinding.porfilePhotoImageView.setImageBitmap(bitmap1)
             }
         }
     }
@@ -96,7 +100,7 @@ class RegisterFragment : Fragment() {
             val cel = celEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            registerViewModel.registerUser(name, email, cel, password)
+            registerViewModel.registerUser(name, email, cel, password,registerViewModel.urlPicture)
 
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
 

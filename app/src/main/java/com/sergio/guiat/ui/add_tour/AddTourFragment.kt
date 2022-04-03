@@ -2,14 +2,18 @@ package com.sergio.guiat.ui.add_tour
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
+import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.sergio.guiat.databinding.FragmentAddTourBinding
+
 
 class AddTourFragment : Fragment() {
 
@@ -19,12 +23,11 @@ class AddTourFragment : Fragment() {
     private lateinit var addTourViewModel: AddTourViewModel
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        addTourBinding = FragmentAddTourBinding.inflate(inflater,container,false)
+        addTourBinding = FragmentAddTourBinding.inflate(inflater, container, false)
         addTourViewModel = ViewModelProvider(this)[AddTourViewModel::class.java]
         return addTourBinding.root
     }
@@ -36,11 +39,11 @@ class AddTourFragment : Fragment() {
             onMsgDoneSubscribe(result)
         }
 
-        addTourViewModel.dataValidated.observe(viewLifecycleOwner){result ->
+        addTourViewModel.dataValidated.observe(viewLifecycleOwner) { result ->
             onDataValidatedSubscribe(result)
         }
 
-        addTourBinding.addButton.setOnClickListener{
+        addTourBinding.addButton.setOnClickListener {
             addTourViewModel.validateFields(
                 addTourBinding.nameTourEditText.text.toString(),
                 addTourBinding.descriptionEditText.text.toString(),
@@ -70,6 +73,8 @@ class AddTourFragment : Fragment() {
         if (requestCode == fileResult) {
             if (resultCode == RESULT_OK && data != null) {
                 val clipData = data.clipData
+                // val imageBitmap: Bitmap = data.getParcelableExtra("data")!!
+                // addTourBinding.tourPhotoImageView.setImageBitmap(imageBitmap)
                 if (clipData != null) {
                     for (i in 0 until clipData.itemCount) {
                         val uri = clipData.getItemAt(i).uri
@@ -79,20 +84,33 @@ class AddTourFragment : Fragment() {
                     val uri = data.data
                     uri?.let { addTourViewModel.fileUpload(it) }
                 }
+
+                val uri1 = data.data
+                val bitmap1: Bitmap =
+                    MediaStore.Images.Media.getBitmap(context?.contentResolver, uri1)
+
+                addTourBinding.tourPhotoImageView.setImageBitmap(bitmap1)
             }
         }
     }
 
 
-
     private fun onDataValidatedSubscribe(result: Boolean?) {
-        with(addTourBinding){
+        with(addTourBinding) {
             val nameTour: String = nameTourEditText.text.toString()
-            val description : String = descriptionEditText.text.toString()
-            val sites : String = sitesEditText.text.toString()
-            val schedule : String = scheduleEditText.text.toString()
+            val description: String = descriptionEditText.text.toString()
+            val sites: String = sitesEditText.text.toString()
+            val schedule: String = scheduleEditText.text.toString()
 
-            addTourViewModel.saveTour(nameTour,description,sites,schedule,addTourViewModel.urlPicture)
+            addTourViewModel.saveTour(
+                nameTour,
+                description,
+                sites,
+                schedule,
+                addTourViewModel.urlPicture
+            )
+
+            findNavController().navigate(AddTourFragmentDirections.actionAddTourFragmentToGuidebookFragment())
 
 
         }

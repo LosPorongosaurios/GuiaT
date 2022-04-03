@@ -21,7 +21,7 @@ class UsersRepository {
     val db = Firebase.firestore
     private val auth: FirebaseAuth = Firebase.auth
 
-    suspend fun registerUser(mail: String, password: String, name:String): String? {
+    suspend fun registerUser(mail: String, password: String): String? {
         return try {
             val result = auth.createUserWithEmailAndPassword(mail, password).await()
             result.user?.uid
