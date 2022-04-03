@@ -46,10 +46,8 @@ class AddTourViewModel : ViewModel() {
         schedule: String,
         urlPicture: String
     ) {
-        if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty()) {
-            msg.value = "Debe digitar todos los campos"
-        }else if (urlPicture.isEmpty()){
-            msg.value = "Debe seleccionar una foto"
+        if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty() || urlPicture.isEmpty()) {
+            msg.value = "Debe digitar todos los campos e incluir una imagen"
         }else {
             dataValidate.value = true
         }
