@@ -62,7 +62,7 @@ class AddTourFragment : Fragment() {
     }
 
     private fun fileManager() {
-        val intent = Intent(Intent.ACTION_VIEW)
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
 
         }

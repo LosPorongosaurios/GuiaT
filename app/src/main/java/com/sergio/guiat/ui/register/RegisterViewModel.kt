@@ -1,17 +1,23 @@
 package com.sergio.guiat.ui.register
 
+import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.sergio.guiat.server.User
 import com.sergio.guiat.server.serverrepository.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.HashMap
 import java.util.regex.Pattern
 
 
@@ -30,6 +36,10 @@ class RegisterViewModel : ViewModel() {
 
     private val registerSucess: MutableLiveData<String?> = MutableLiveData()
     val registerSucessDone: LiveData<String?> = registerSucess
+
+    private val database = Firebase.database
+    lateinit var urlPicture: String
+    private val myRef = database.getReference("user")
 
     fun registerUser(name: String, email: String,cel: String, password: String) {
 
@@ -56,6 +66,29 @@ class RegisterViewModel : ViewModel() {
                 }
         }
 
+    }
+
+    fun fileUpload(mUri: Uri) {
+        val folder: StorageReference = FirebaseStorage.getInstance().reference.child("porfile_picture")
+        val path = mUri.lastPathSegment.toString()
+        val fileName: StorageReference = folder.child(path.substring(path.lastIndexOf('/') + 1))
+
+        fileName.putFile(mUri).addOnSuccessListener {
+            fileName.downloadUrl.addOnSuccessListener { uri ->
+                val hashMap = HashMap<String, String>()
+                hashMap["link"] = java.lang.String.valueOf(uri)
+
+                urlPicture = uri.toString()
+
+
+                myRef.child(myRef.push().key.toString()).setValue(hashMap)
+
+                Log.i("message", "file upload successfully")
+
+            }.addOnFailureListener {
+                Log.i("message", "file upload error")
+            }
+        }
     }
 
     val passwordRegul = Pattern.compile(

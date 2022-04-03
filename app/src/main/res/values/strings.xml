@@ -41,4 +41,5 @@
     <string name="reserve_now">Reservar Ahora!</string>
     <string name="chat">Chatea</string>
     <string name="schudele_example">De Lunes a Viernes 10-14 Sabado y Domingo 8 - 16</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
