@@ -5,19 +5,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.sergio.guiat.GuiaTProject.Companion.database
 import com.sergio.guiat.server.serverrepository.RoutesServerRepository
 import com.sergio.guiat.server.serverrepository.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 class AddTourViewModel : ViewModel() {
@@ -48,7 +45,7 @@ class AddTourViewModel : ViewModel() {
     ) {
         if (nameTour.isEmpty() || description.isEmpty() || sites.isEmpty() || schedule.isEmpty() || urlPicture.isEmpty()) {
             msg.value = "Debe digitar todos los campos e incluir una imagen"
-        }else {
+        } else {
             dataValidate.value = true
         }
     }
@@ -64,9 +61,9 @@ class AddTourViewModel : ViewModel() {
     ) {
 
         GlobalScope.launch(Dispatchers.IO) {
-             val result = usersRepository.searchUser()
+            val result = usersRepository.searchUser()
             result.getString("name")?.let { Log.d("name", it) }
-                guideTour = result.getString("name")
+            guideTour = result.getString("name")
             guideTour?.let {
                 routeServerRepository.saveTour(
                     nameTour,
@@ -74,7 +71,7 @@ class AddTourViewModel : ViewModel() {
                 )
             }
 
-       }
+        }
     }
 
     fun fileUpload(mUri: Uri) {

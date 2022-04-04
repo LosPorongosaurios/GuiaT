@@ -1,13 +1,10 @@
 package com.sergio.guiat.ui.guidebook
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -20,7 +17,7 @@ class GuidebookFragment : Fragment() {
     private lateinit var guidebookBinding: FragmentGuidebookBinding
     private lateinit var guidebookViewModel: GuidebookViewModel
     private lateinit var routesAdapter: RoutesAdapter
-    private var routesList : ArrayList<RoutesServer> = ArrayList()
+    private var routesList: ArrayList<RoutesServer> = ArrayList()
 
 
     override fun onCreateView(
@@ -39,13 +36,13 @@ class GuidebookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        guidebookViewModel.loadToursDone.observe(viewLifecycleOwner){ result ->
+        guidebookViewModel.loadToursDone.observe(viewLifecycleOwner) { result ->
             onLoadToursDoneSubscribe(result)
         }
 
         guidebookViewModel.loadTours()
 
-        routesAdapter = RoutesAdapter( onItemClicked = {onTourItemClicked(it)})
+        routesAdapter = RoutesAdapter(onItemClicked = { onTourItemClicked(it) })
 
         guidebookBinding.routesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@GuidebookFragment.requireContext())
@@ -57,16 +54,19 @@ class GuidebookFragment : Fragment() {
 
 
     private fun onTourItemClicked(route: RoutesServer) {
-        findNavController().navigate(GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2(route))
-       // route.name?.let { Log.d("nombreView",it) }
+        findNavController().navigate(
+            GuidebookFragmentDirections.actionGuidebookFragmentToDetailFragment2(
+                route
+            )
+        )
+
     }
 
     private fun onLoadToursDoneSubscribe(routesListLoaded: ArrayList<RoutesServer>) {
         routesList = routesListLoaded
-        Log.d("list",routesList.toString())
+        Log.d("list", routesList.toString())
         routesAdapter.appendItems(routesList)
     }
-
 
 
 }

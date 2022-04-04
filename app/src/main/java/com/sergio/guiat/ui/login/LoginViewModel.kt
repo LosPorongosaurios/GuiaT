@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.local.Users
 import com.sergio.guiat.server.serverrepository.UsersRepository
 
 class LoginViewModel : ViewModel() {

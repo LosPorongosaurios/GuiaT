@@ -42,4 +42,13 @@
     <string name="chat">Chatea</string>
     <string name="schudele_example">De Lunes a Viernes 10-14 Sabado y Domingo 8 - 16</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="chat_with_user">Chat con usuario</string>
+    <string name="Usuers_in_the_chat">Usuarios en el chat</string>
+    <string name="text_example">texto ejemplo</string>
+    <string name="write_a_message">Escribe un mensaje</string>
+    <string name="send">Enviar</string>
+    <string name="user_example">Usuario Ejemplo</string>
+    <string name="mail_example">Correo ejemplo: qwerty@examlpe.com</string>
+    <string name="number_example">0123456789</string>
 </resources>

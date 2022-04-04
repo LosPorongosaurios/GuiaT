@@ -49,11 +49,6 @@ class MessageAdapter(
 
     }
 
-   /* fun appendItems(newList : ArrayList<MessageModel>){
-        messageList.clear()
-        messageList.addAll(newList)
-        notifyDataSetChanged()
-    }*/
 
 
     override fun getItemCount(): Int {

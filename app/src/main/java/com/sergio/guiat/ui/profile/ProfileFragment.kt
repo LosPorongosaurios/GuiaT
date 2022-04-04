@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
         with(profileBinding){
             nameUserTextView.text = user?.name.toString()
             emailUserTextView.text = user?.email.toString()
-            celUserTextView.text = user?.email.toString()
+            celUserTextView.text = user?.cel.toString()
             Picasso.get().load(user?.urlPicture).into(profileImageView)
         }
 

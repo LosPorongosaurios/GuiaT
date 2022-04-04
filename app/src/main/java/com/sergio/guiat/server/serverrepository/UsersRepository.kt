@@ -6,12 +6,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.GuiaTProject
-import com.sergio.guiat.local.Users
-import com.sergio.guiat.local.GuiaTDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -28,13 +24,13 @@ class UsersRepository {
         } catch (e: FirebaseAuthException) {
             Log.d("errorRegister", e.localizedMessage)
             e.localizedMessage
-        } catch (e: FirebaseNetworkException){
+        } catch (e: FirebaseNetworkException) {
             e.localizedMessage
         }
     }
 
-    suspend fun searchUser() : DocumentSnapshot {
-        return withContext(Dispatchers.IO){
+    suspend fun searchUser(): DocumentSnapshot {
+        return withContext(Dispatchers.IO) {
             db.collection("users").document(auth.currentUser?.uid.toString()).get().await()
         }
     }

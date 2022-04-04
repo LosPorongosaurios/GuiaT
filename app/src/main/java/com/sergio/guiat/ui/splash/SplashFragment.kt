@@ -1,17 +1,15 @@
 package com.sergio.guiat.ui.splash
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.sergio.guiat.R
 import com.sergio.guiat.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {
@@ -34,10 +32,10 @@ class SplashFragment : Fragment() {
 
 
     private fun addSubscriptions() {
-        splashViewModel.onTimer.observe(viewLifecycleOwner){
-            if( auth.currentUser == null){
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
-        }else findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToDrawerActivity2())
+        splashViewModel.onTimer.observe(viewLifecycleOwner) {
+            if (auth.currentUser == null) {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            } else findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToDrawerActivity2())
         }
     }
 
